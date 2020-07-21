@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#prompt{
+				font-size: 10px;
+				color: #f00;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oInput = document.getElementsByTagName("input")[0],
+					oButton = document.getElementsByTagName("button")[1],	
+					oPrompt = document.getElementById("prompt");
+					oButton.onclick = function(){
+						oInput.value = "";
+						oPrompt.innerHTML = "正确格式为不能以数字开头的6-15位数字字母下划线。";
+					}
+					oInput.onchange = function(){
+						var str = this.value;
+						var reg = /^[a-zA-Z_]\w{5,14}$/;
+					if(str == ""){
+						oPrompt.innerHTML = "正确格式为不能以数字开头的6-15位数字字母下划线。";
+					}else{
+						if(reg.test(str)){
+							oPrompt.innerHTML = "格式正确!";
+						}else{
+							oPrompt.innerHTML = "格式错误!";
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		用户名:<input type="text" placeholder="请输入正确格式的用户名"/>
+		<button type="button">注册</button>
+		<button type="button">清空</button>
+		<br>
+		<span id="prompt">
+			正确格式为不能以数字开头的6-15位数字字母下划线。
+		</span>
+	</body>
+</html>
